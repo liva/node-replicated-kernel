@@ -989,6 +989,7 @@ dependencies = [
  "rand 0.8.4",
  "rawtime",
  "rexpect",
+ "rpc",
  "serde",
  "serde_cbor",
  "slabmalloc",
