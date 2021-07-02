@@ -3,6 +3,14 @@
 version = 3
 
 [[package]]
+name = "abomonation"
+version = "0.7.3"
+source = "git+https://github.com/hunhoffe/abomonation.git?branch=no_std#80f5f6e80050f0730e7310539759bd82b3f8fb13"
+dependencies = [
+ "smoltcp",
+]
+
+[[package]]
 name = "addr2line"
 version = "0.16.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1429,6 +1437,19 @@ dependencies = [
 ]
 
 [[package]]
+name = "rpc"
+version = "0.1.0"
+dependencies = [
+ "abomonation",
+ "kpi",
+ "lazy_static",
+ "log",
+ "smoltcp",
+ "spin 0.5.2",
+ "vmxnet3",
+]
+
+[[package]]
 name = "rumpkernel"
 version = "0.0.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1549,17 +1570,6 @@ dependencies = [
  "byteorder",
  "log",
  "managed 0.7.2",
-]
-
-[[package]]
-name = "smoltcp"
-version = "0.8.0"
-source = "git+https://github.com/smoltcp-rs/smoltcp.git?branch=master#1134eb28d8c6886034f6ccad452101dc5e6d679c"
-dependencies = [
- "bitflags 1.2.1",
- "byteorder",
- "log",
- "managed 0.8.0",
 ]
 
 [[package]]
@@ -1746,7 +1756,7 @@ dependencies = [
  "driverkit",
  "env_logger 0.9.0",
  "log",
- "smoltcp 0.7.3",
+ "smoltcp",
  "static_assertions",
  "x86 0.43.0",
 ]
