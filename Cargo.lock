@@ -758,6 +758,7 @@ dependencies = [
 name = "kpi"
 version = "0.1.0"
 dependencies = [
+ "abomonation",
  "bitflags",
  "env_logger 0.9.0",
  "log",
