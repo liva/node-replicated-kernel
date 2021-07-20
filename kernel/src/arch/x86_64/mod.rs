@@ -67,6 +67,7 @@ pub mod kcb;
 pub mod memory;
 pub mod network;
 pub mod process;
+pub mod remote_syscall;
 pub mod syscall;
 pub mod timer;
 pub mod tlb;
