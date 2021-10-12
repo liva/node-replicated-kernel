@@ -715,6 +715,7 @@ fn vmxnet_smoltcp() {
 fn xmain() {
     use rpc::tcp_server::TCPServer;
     use rpc::rpc_api::RPCServerAPI;
+    use rpc::cluster_api::ClusterControllerAPI;
     use rpc::rpc::RPCType;
     use crate::arch::network::init_network;
     use crate::arch::exokernel::*;
