@@ -12,7 +12,7 @@ use crate::ExitReason;
 type MainFn = fn();
 
 #[cfg(feature = "integration-test")]
-const INTEGRATION_TESTS: [(&'static str, MainFn); 24] = [
+const INTEGRATION_TESTS: [(&'static str, MainFn); 25] = [
     ("exit", just_exit_ok),
     ("wrgsbase", wrgsbase),
     ("pfault-early", just_exit_fail),
@@ -37,6 +37,7 @@ const INTEGRATION_TESTS: [(&'static str, MainFn); 24] = [
     ("replica-advance", replica_advance),
     ("vmxnet-smoltcp", vmxnet_smoltcp),
     ("gdb", gdb),
+    ("controller", controller),
 ];
 
 #[cfg(feature = "integration-test")]
@@ -707,12 +708,8 @@ fn vmxnet_smoltcp() {
 }
 
 /// Test TCP RPC-based controller
-#[cfg(all(
-    feature = "integration-test",
-    feature = "test-controller",
-    target_arch = "x86_64"
-))]
-fn xmain() {
+#[cfg(all(feature = "integration-test", target_arch = "x86_64"))]
+fn controller() {
     use rpc::tcp_server::TCPServer;
     use rpc::rpc_api::RPCServerAPI;
     use rpc::cluster_api::ClusterControllerAPI;
@@ -730,7 +727,7 @@ fn xmain() {
         .add_client(&CLIENT_REGISTRAR).unwrap();
     server.run_server().unwrap();
 
-    arch::debug::shutdown(ExitReason::Ok);
+    shutdown(ExitReason::Ok);
 }
 
 /// Test shootdown facilities in the kernel.
